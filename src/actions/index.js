@@ -23,6 +23,15 @@ export const addToCart = productId => (dispatch, getState) => {
   }
 }
 
+const pageView = view => ({
+  type: types.PAGE_VIEW,
+  view
+})
+
+export const setPageView = page => (dispatch) => {
+  dispatch(pageView(page))
+}
+
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
 

@@ -1,21 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { addToCart } from '../actions'
+import { addToCart, setPageView } from '../actions'
 import { getVisibleProducts } from '../reducers/products'
 import ProductItem from '../components/ProductItem'
 import ProductsList from '../components/ProductsList'
+import Header from '../components/Header'
 
-const ProductsContainer = ({ products, addToCart }) => (
-  <ProductsList title="Products">
-    {products.map(product =>
-      <ProductItem
-        key={product.id}
-        product={product}
-        onAddToCartClicked={() => addToCart(product.id)} />
-    )}
-  </ProductsList>
-)
+const ProductsContainer = ({ products, addToCart, page, setPageView }) => {
+  return page === 'products' ? (
+    <div>
+      <Header 
+        onClickSetPageView={setPageView} 
+      />
+      <ProductsList>
+        {products.map(product =>
+          <ProductItem
+            key={product.id}
+            product={product}
+            onAddToCartClicked={() => addToCart(product.id)} />
+        )}
+      </ProductsList>
+    </div>
+  ) : null
+}
 
 ProductsContainer.propTypes = {
   products: PropTypes.arrayOf(PropTypes.shape({
@@ -24,7 +32,9 @@ ProductsContainer.propTypes = {
     price: PropTypes.number.isRequired,
     inventory: PropTypes.number.isRequired
   })).isRequired,
-  addToCart: PropTypes.func.isRequired
+  addToCart: PropTypes.func.isRequired,
+  page: PropTypes.string.isRequired,
+  setPageView: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -33,5 +43,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addToCart }
+  { addToCart, setPageView }
 )(ProductsContainer)

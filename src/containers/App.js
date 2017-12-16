@@ -1,15 +1,22 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import ProductsContainer from './ProductsContainer'
 import CartContainer from './CartContainer'
+import { setPageView } from '../actions'
 
-const App = () => (
+const App = ({page}) => (
   <div>
-    <h2>Shopping Cart Example</h2>
-    <hr/>
-    <ProductsContainer />
-    <hr/>
-    <CartContainer />
+    <ProductsContainer page={page} />
+    <CartContainer page={page} />
   </div>
 )
 
-export default App
+const mapStateToProps = (state) => ({
+  page: state.view.page
+})
+
+export default connect(
+  mapStateToProps,
+  { setPageView }
+)(App)
+

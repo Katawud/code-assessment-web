@@ -1,0 +1,122 @@
+* { 
+  margin: 0; 
+  padding: 0; 
+}
+
+body {
+  font-family: Arial;
+  font-weight: normal;
+  font-size: 16px;
+  background-color: #F4F5F7;
+  margin: 50px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+  border-bottom: 1px solid #DADADA;
+}
+
+h2 {
+  font-size: 52px;
+  font-weight: normal;
+  letter-spacing: -1.07px;
+}
+
+header h2 {
+  flex: 1;
+  white-space: nowrap;
+}
+
+header .cart-icon {
+  height: 17px;
+  height: 13.54px;
+}
+header > a {
+  font-size: 14px;
+  text-decoration: none;
+}
+header p {
+  display: inline;
+  margin-left: 7px;
+}
+
+.product-details {
+  display: flex;
+}
+
+.details {
+  flex: 2;
+  padding: 40px;
+  position: relative;
+}
+
+.details > div {
+  display: flex;
+}
+
+.details .title {
+  font-size: 38px;
+  flex: 2;
+  letter-spacing: -0.3px;
+}
+
+.details .price {
+  color: #202020;
+  font-size: 21px;
+  letter-spacing: -0.27px;
+  line-height: 2;
+}
+
+.details .inventory {
+  color: #939393;
+  font-size: 13px;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.details .button{
+  bottom: 40px;
+  position: absolute;
+}
+
+.product-row {
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.product-row img {
+  height: 282px;
+  width: auto;
+  border-radius: 10px 0 0 10px;
+}
+
+.button {
+  background-color: #5E97D1;
+  border: none;
+  appearance: none;
+  box-sizing: border-box;
+  width: auto;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  text-align: center;
+  padding: 0.8rem 1.6rem;
+  margin: 0;
+  border-radius: 624.9375rem;
+  font-style: normal;
+  line-height: 1;
+  font-size: .875rem;
+  color: #FFF;
+  text-transform: uppercase;
+}
+
+.button[disabled] {
+  opacity: 0.3;
+}
+.button:hover {
+  background-color: #407FC0;
+}
