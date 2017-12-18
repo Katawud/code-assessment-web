@@ -9,7 +9,7 @@ import Header from '../components/Header'
 
 const ProductsContainer = ({ products, addToCart, page, setPageView }) => {
   return page === 'products' ? (
-    <div>
+    <div className="products-container">
       <Header 
         onClickSetPageView={setPageView} 
       />

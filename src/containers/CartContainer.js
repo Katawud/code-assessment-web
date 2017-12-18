@@ -7,12 +7,14 @@ import Cart from '../components/Cart'
 
 const CartContainer = ({ products, total, checkout, page, setPageView }) => {
   return page === 'cart' ? (
-    <Cart
-      products={products}
-      total={total}
-      onCheckoutClicked={() => checkout(products)} 
-      onClickSetPageView={() => setPageView('products')}
-    />
+    <div className="cart-container">
+      <Cart
+        products={products}
+        total={total}
+        onCheckoutClicked={() => checkout(products)} 
+        onClickSetPageView={() => setPageView('products')}
+      />
+    </div>
   ) : null
 }
 

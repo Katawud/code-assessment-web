@@ -11,22 +11,30 @@ const Cart  = ({ products, total, onCheckoutClicked, onClickSetPageView }) => {
         price={product.price}
         quantity={product.quantity}
         key={product.id}
+        id={product.id}
       />
     )
   ) : (
-    <em>Please add some products to cart.</em>
+    <div className="cart-empty">
+      <img src="assets/cartIcon.svg" alt="close" />
+      <p>Please add some products <br /> to your cart.</p>
+    </div>
   )
 
   return (
-    <div className="cart-container">
-      <button onClick={onClickSetPageView}>return to products</button>
-      <h3>Your Cart</h3>
+    <div className="cart">
+      <span onClick={onClickSetPageView} className="close-btn-x">
+        <img src="assets/closeBtn.svg" alt="close" />
+      </span>
+      <h3>Your cart</h3>
       <div>{nodes}</div>
+      {/* 
       <p>Total: &#36;{total}</p>
       <button onClick={onCheckoutClicked}
         disabled={hasProducts ? '' : 'disabled'}>
         Checkout
       </button>
+      */}
     </div>
   )
 }

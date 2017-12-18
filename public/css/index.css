@@ -8,7 +8,10 @@ body {
   font-weight: normal;
   font-size: 16px;
   background-color: #F4F5F7;
-  margin: 50px;
+}
+
+.products-container {
+  margin: 30px 80px;
 }
 
 header {
@@ -27,16 +30,24 @@ h2 {
 header h2 {
   flex: 1;
   white-space: nowrap;
+  line-height: 2em;
 }
 
 header .cart-icon {
   height: 17px;
   height: 13.54px;
 }
+
 header > a {
   font-size: 14px;
   text-decoration: none;
+  color: #292929;
 }
+
+header > a:hover {
+  color: #407FC0;
+}
+
 header p {
   display: inline;
   margin-left: 7px;
@@ -48,8 +59,10 @@ header p {
 
 .details {
   flex: 2;
-  padding: 40px;
+  padding: 40px 70px 40px 40px;
   position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .details > div {
@@ -67,18 +80,19 @@ header p {
   font-size: 21px;
   letter-spacing: -0.27px;
   line-height: 2;
+  margin-left: 10px;
 }
 
 .details .inventory {
   color: #939393;
   font-size: 13px;
-  margin-top: 20px;
+  margin: 20px 0 20px;
   text-transform: uppercase;
+  flex-grow: 1;
 }
 
 .details .button{
-  bottom: 40px;
-  position: absolute;
+  width: 148px;
 }
 
 .product-row {
@@ -89,7 +103,6 @@ header p {
 
 .product-row img {
   height: 282px;
-  width: auto;
   border-radius: 10px 0 0 10px;
 }
 
@@ -116,7 +129,228 @@ header p {
 
 .button[disabled] {
   opacity: 0.3;
+  cursor: default;
 }
-.button:hover {
+
+.button:hover:not([disabled]) {
   background-color: #407FC0;
+}
+
+/*
+In the event we want to center the content at 1280 and not span the entire page.
+@media (min-width: 1280px) {
+  .products-container {
+    max-width: 1280px;
+    margin: 30px auto 0;
+  }
+}
+*/
+.cart-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart {
+  min-height: 518px;
+  width: 620px;
+  background-color: #FFF;
+  border-radius: 10px;
+  position: relative;
+  padding: 80px;
+  box-shadow: 0px 0px 5px 1px rgba(0, 0 ,0 , 0.1);
+}
+
+.cart .close-btn-x {
+  position: absolute;
+  top: 27px;
+  right: 27px;
+  cursor: pointer;
+}
+
+.cart .close-btn-x img {
+  height: 32px;
+  width: 32px;
+}
+
+.cart h3 {
+  font-size: 38px;
+  font-weight: normal;
+  letter-spacing: -0.8px;
+  border-bottom: 1px solid #DADADA;
+  line-height: 2em;
+}
+
+.cart .cart-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 438px;
+}
+
+.cart .cart-empty > img {
+  height: 75px;
+  width: 95px;
+}
+
+.cart .cart-empty > p {
+  margin-top: 30px;
+  font-size: 21px;
+  color: #919191;
+  letter-spacing: -0.44px;
+  text-align: center;
+  line-height: 28px;
+}
+
+.cart .product-details {
+  margin-top: 20px;
+}
+
+.cart .product-details img {
+  height: 160px;
+}
+
+.cart .product-details .details {
+  padding: 10px;
+}
+
+@media 
+  (min-width: 768px) and (max-width: 1024px),
+  (min-width: 481px) and (max-width: 767px)  {
+    .products-container {
+      max-width: 1024px;
+      margin: 20px 50px;
+    }
+
+    h2 {
+      font-size: 38px;
+    }
+
+    .details {
+      padding: 30px;
+    }
+
+    .details .title {
+      font-size: 28px;
+    }
+
+    .details .inventory {
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .details .price {
+      line-height: 1.5em;
+    }
+
+    .product-row img {
+      height: 196px;
+      width: 272px;
+    }
+}
+
+@media (max-width: 670px) {
+  .product-details {
+    flex-flow: wrap;
+  } 
+
+  .product-row img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .cart-container {
+    height: 100%
+  }
+  
+  .cart {
+    min-height: calc(100vh - 30px);
+    padding: 15px;
+    width: 100vw;
+    padding: 15px;
+  }
+
+  .cart .cart-empty {
+    height: calc(100vh - 110px);
+  }
+}
+
+@media (max-width: 480px) {
+  h2 {
+    font-size: 28px;
+  }
+
+  .products-container {
+    margin: 20px;
+  }
+    
+  header {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 20px;
+  }
+
+  header > a {
+    margin-bottom: 20px;
+  }
+
+  header h2 {
+    line-height: 1.4em;
+  }
+
+  .product-row {
+    margin-top: 10px;
+  }
+
+  .product-row img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .details {
+    padding: 20px;
+  }
+
+  .details .title {
+    font-size: 21px;
+  }
+
+  .details .price {
+    font-size: 16px;
+    line-height: 1.4em;
+  }
+
+  .cart {
+    width: 100vw;
+    height: calc(100vh - 30px);
+    padding: 15px;
+    border-radius: 0;
+  }
+  
+  .cart h3 {
+    font-size: 28px;
+  }
+  
+  .cart .close-btn-x img{
+    height: 20px;
+    width: 20px;
+  }
+  
+  .cart .details .title {
+    font-size: 16px;
+  }
+  
+  .cart .details .price {
+    font-size: 14px;
+    line-height: 1em;
+  }
+  
+  .cart .product-details img {
+    height: 78px;
+    width: 107px;
+  }
 }
