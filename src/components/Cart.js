@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Product from './Product'
 
-const Cart  = ({ products, total, onCheckoutClicked, onClickSetPageView }) => {
+const Cart  = ({ products, total, onCheckoutClicked, onClickSetPageView, onRemoveFromCartClick, onAddQtyClick, onRemoveQtyClick}) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
@@ -12,6 +12,10 @@ const Cart  = ({ products, total, onCheckoutClicked, onClickSetPageView }) => {
         quantity={product.quantity}
         key={product.id}
         id={product.id}
+        inventory={product.inventory}
+        onRemoveFromCartClick={() => onRemoveFromCartClick(product.id)}
+        onAddQtyClick={() => onAddQtyClick(product.id)}
+        onRemoveQtyClick={() => onRemoveQtyClick(product.id)}
       />
     )
   ) : (
@@ -28,13 +32,15 @@ const Cart  = ({ products, total, onCheckoutClicked, onClickSetPageView }) => {
       </span>
       <h3>Your cart</h3>
       <div>{nodes}</div>
-      {/* 
-      <p>Total: &#36;{total}</p>
-      <button onClick={onCheckoutClicked}
-        disabled={hasProducts ? '' : 'disabled'}>
-        Checkout
-      </button>
-      */}
+      {hasProducts &&
+        <div>
+          <div className="total"><span>Total:</span> &#36;{total}</div>
+          <button className="button" onClick={onCheckoutClicked}
+            disabled={hasProducts ? '' : 'disabled'}>
+            Checkout
+          </button>
+        </div>
+      }
     </div>
   )
 }
@@ -42,7 +48,11 @@ const Cart  = ({ products, total, onCheckoutClicked, onClickSetPageView }) => {
 Cart.propTypes = {
   products: PropTypes.array,
   total: PropTypes.string,
-  onCheckoutClicked: PropTypes.func
+  onCheckoutClicked: PropTypes.func,
+  onClickSetPageView: PropTypes.func,
+  onRemoveFromCartClick: PropTypes.func,
+  onAddQtyClick: PropTypes.func,
+  onRemoveQtyClick: PropTypes.func
 }
 
 export default Cart

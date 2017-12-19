@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { addToCart, setPageView } from '../actions'
 import { getVisibleProducts } from '../reducers/products'
+import { getTotal } from '../reducers'
 import ProductItem from '../components/ProductItem'
 import ProductsList from '../components/ProductsList'
 import Header from '../components/Header'
 
-const ProductsContainer = ({ products, addToCart, page, setPageView }) => {
+const ProductsContainer = ({ products, addToCart, page, setPageView, total }) => {
   return page === 'products' ? (
     <div className="products-container">
       <Header 
-        onClickSetPageView={setPageView} 
+        onClickSetPageView={setPageView}
+        total={total}
       />
       <ProductsList>
         {products.map(product =>
@@ -38,7 +40,8 @@ ProductsContainer.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  products: getVisibleProducts(state.products)
+  products: getVisibleProducts(state.products),
+  total: getTotal(state)
 })
 
 export default connect(

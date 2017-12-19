@@ -9,7 +9,7 @@ const Header = ({ onClickSetPageView, total }) => (
       onClickSetPageView('cart')
     }}>
       <img className="cart-icon" src="assets/cartIcon.svg" alt="View Cart" />
-      {total ? total : (<p>Your cart is empty</p>)}
+      {parseInt(total) > 0 ? <span>&#160;&#36;{total}</span> : (<p>Your cart is empty</p>)}
     </a>
   </header>
 )
