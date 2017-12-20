@@ -7,12 +7,8 @@ const Cart  = ({ products, total, onCheckoutClicked, onClickSetPageView, onRemov
   const nodes = hasProducts ? (
     products.map(product =>
       <Product
-        title={product.title}
-        price={product.price}
-        quantity={product.quantity}
         key={product.id}
-        id={product.id}
-        inventory={product.inventory}
+        product={product}
         onRemoveFromCartClick={() => onRemoveFromCartClick(product.id)}
         onAddQtyClick={() => onAddQtyClick(product.id)}
         onRemoveQtyClick={() => onRemoveQtyClick(product.id)}
